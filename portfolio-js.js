@@ -153,19 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
             body.style.overflow = 'hidden'; // Prevent background scrolling
         });
 
-        // Close card details
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent triggering card click when closing
-            cardDetails.classList.remove('active');
-            body.style.overflow = 'auto'; // Restore scrolling
-        });
+        // // Close card details with btn
+        // closeBtn.addEventListener('click', (e) => {
+        //     e.stopPropagation(); // Prevent triggering card click when closing
+        //     cardDetails.classList.remove('active');
+        //     body.style.overflow = 'auto'; // Restore scrolling
+        // });
 
         // Close on outside click
         cardDetails.addEventListener('click', (e) => {
             if (e.target === cardDetails) {
+                e.stopPropagation();
                 cardDetails.classList.remove('active');
                 body.style.overflow = 'auto';
             }
+            // e.stopPropagation(); // Prevent triggering card click when closing
+            // cardDetails.classList.remove('active');
+            // body.style.overflow = 'auto'; // Restore scrolling
         });
 
         // Close on ESC key
