@@ -9,7 +9,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Typing animation for hero section
-const text = "Master's Student | Data Scientist | Software Engineer";
+const text = "Master's Student | AI/ML Explorer | Data Science Enthusiast";
 const typingText = document.querySelector('.typing-text');
 let i = 0;
 
