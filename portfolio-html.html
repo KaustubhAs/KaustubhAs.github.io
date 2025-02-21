@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaustubh Sonawane - Portfolio</title>
+    <link rel="stylesheet" href="portfolio-css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <!-- Add this inside the nav-content div, before the nav-links -->
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-overlay"></div>
+            <div class="logo">KS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#extracurricular">Extracurricular</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Kaustubh Sonawane</h1>
+            <p class="typing-text">Master's Student | AI/ML Explorer | Data Science Enthusiast</p>
+            <div class="social-links">
+                <a href="mailto:ksonawa@ncsu.edu"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+13526792771"><i class="fas fa-phone"></i></a>
+                <a href="https://www.linkedin.com/in/iamkaustubhsonawane/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/KaustubhAs"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="skills-container">
+                <h3>Technical Skills</h3>
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <div class="skill-items">
+                        <span>Python</span>
+                        <span>Kotlin</span>
+                        <span>SQL</span>
+                        <span>R</span>
+                        <span>C++</span>
+                        <span>HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Frameworks</h4>
+                    <div class="skill-items">
+                        <span>Microsoft PowerBI</span>
+                        <span>Tableau</span>
+                        <span>PostgreSQL</span>
+                        <span>Microsoft AWS</span>
+                        <span>Azure</span>
+                        <span>Azure Machine Learning Studio</span>
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
+                        <span>PyTorch</span>
+                        <span>TensorFlow</span>
+                        <span>Git</span>
+                        <span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-cards">
+            <div class="edu-card">
+                <h3>NC State University</h3>
+                <p>Master of Computer Science</p>
+                <p>Aug 2024 – May 2026</p>
+                <p>GPA: 3.55/4.0</p>
+            </div>
+            <div class="edu-card">
+                <h3>University of Mumbai</h3>
+                <p>Bachelor of Engineering - Computer Engineering</p>
+                <p>Aug 2020 – Jun 2024</p>
+                <p>CGPA: 8.83/10</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section id="projects">
+        <h2>Projects and Publications</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
+                <p>Sep 2024 – Dec 2024</p>
+                <ul>
+                    <li>Implemented and compared real-time object recognition models using PASCAL VOC 2007 Dataset. With a focus on speed-accuracy trade-offs.</li>
+                    <li>Optimized model performance through data preprocessing, augmentation, and stratified 5-fold cross-validation while leveraging PyTorch and CUDA for efficient training</li>
+                    <li>Achieved YOLO(135 FPS, 75.7% mAP) vs. SSD(30 FPS, 91.7% precision)</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Customer Behavior Analysis</h3>
+                <p>Jul 2023 – May 2024</p>
+                <ul>
+                    <li>Developed recommendation models using Random Forest, SVD, MF, PMF, CNNs, Stacked LSTM, Autoencoders</li>
+                    <li>To perform comparative analysis of their accuracies and their ability to capture intricate user-item interactions.</li>
+                    <li> Utilized Amazon Food Reviews dataset, with 568,454 reviews, 74,258 products and 256,059 users. </li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Leafine - Plant Health Detection System</h3>
+                <p>Feb 2023 – Apr 2023</p>
+                <ul>
+                    <li>Published in Journal of Emerging Technologies and Innovative Research (JETIR) – Oct [2023]</li>
+                    <li>Integrated Image Processing using CNN Model with TensorFlow and OpenCV, to develop a mobile application that will help farmers and people who know little about plant disease, to identify its type and control the plant illness. </li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Hand Gesture Control</h3>
+                <p>Oct 2022 – Dec 2022</p>
+                <ul>
+                    <li>Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</li>
+                    <li>Developed a gesture control system using OpenCV, MediaPipe, Numpy and PyAutoGUI, enabling real-time interaction with a computer through hand gestures and to perform activities without a keyboard or mouse.</li>
+                    <li>The project is based on a problem statement by Smart India Hackathon (SIH).  </li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Enigma: AI-Powered Discord Music Bot</h3>
+                <p>Oct 2024 – Dec 2024</p>
+                <ul>
+                    <li>Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</li>
+                    <li>Developed features like song reordering, loop functionality, and feedback-based suggestions. Improved response latency by 30% through API optimization and maintained efficient collaboration using Git workflows.</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Recipe Recommender: Smart Cooking Assistant</h3>
+                <p>Aug 2024 – Oct 2024</p>
+                <ul>
+                    <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
+                    <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
+                </ul>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Replace the existing projects section in your HTML -->
+    <section id="projects">
+        <h2>Projects and Publications</h2>
+        <div class="project-grid">
+            <div class="project-card" data-id="1">
+                <div class="card-preview">
+                    <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
+                    <p class="project-date">Sep 2024 – Dec 2024</p>
+                    <p class="project-brief">Implemented and compared real-time object recognition models using PASCAL VOC 2007 Dataset.</p>
+                    <!-- <button class="read-more">Read More</button> -->
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
+                        <p class="project-date">Sep 2024 – Dec 2024</p>
+                        <ul>
+                            <li>Implemented and compared real-time object recognition models using the PASCAL VOC 2007 (9,600+ images) Dataset.</li>
+                            <li>Optimized performance using data preprocessing, augmentation, and stratified 5-fold cross validation.</li>
+                            <li>Leveraged PyTorch and CUDA for efficiency.</li>
+                            <li>Achieved a speed-accuracy trade-off: YOLO(135 FPS, 75.7% mAP) vs. SSD(30 FPS, 91.7% precision).</li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="2">
+                <div class="card-preview">
+                    <h3>Customer Behavior Analysis</h3>
+                    <p class="project-date">Jul 2023 – May 2024</p>
+                    <p class="project-brief">Developed recommendation models using various ML and DL Algorithms achieving 85+% accuracy.</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Customer Behavior Analysis</h3>
+                        <p class="project-date">Jul 2023 – May 2024</p>
+                        <ul>
+                            <li>Developed recommendation models using Random Forest, SVD, MF, PMF, CNNs, Stacked LSTM, Autoencoders.</li>
+                            <li>Leveraged Scikit-learn, TensorFlow, and PyTorch to improve recommendations.</li>
+                            <li>Achieved 85% accuracy & 0.02 MSE.</li>
+                            <li>Applied SQL joins and aggregate queries to analyze product trends.</li>
+                            <li>Utilized Amazon Food Reviews dataset with 568,454 reviews.</li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="3">
+                <div class="card-preview">
+                    <h3>Leafine - Plant Health Detection System</h3>
+                    <p class="project-date">Feb 2023 – Apr 2023</p>
+                    <p class="project-brief">Published in JETIR – Oct [2023]. Integrated Image Processing using CNN Model.</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Leafine - Plant Health Detection System</h3>
+                        <p class="project-date">Feb 2023 – Apr 2023</p>
+                        <ul>
+                            <li>Published research paper in JETIR – Oct [2023].</li>
+                            <li>Integrated Image Processing using CNN Model with TensorFlow and OpenCV.</li>
+                            <li>Developed a mobile application for plant disease detection, that will help farmers and people who know little about plant disease, to identify its type and control the plant illness. </li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="2">
+                <div class="card-preview">
+                    <h3>Hand Gesture Control</h3>
+                    <p class="project-date">Oct 2022 – Dec 2022</p>
+                    <p class="project-brief">Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Hand Gesture Control</h3>
+                        <p class="project-date">Oct 2022 – Dec 2022</p>
+                        <ul>
+                            <li>Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</li>
+                            <li>Developed a gesture control system using OpenCV, MediaPipe, Numpy and PyAutoGUI, enabling real-time interaction with a computer through hand gestures and to perform activities without a keyboard or mouse.</li>
+                            <li>The project is based on a problem statement by Smart India Hackathon (SIH).  </li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="2">
+                <div class="card-preview">
+                    <h3>Enigma: AI-Powered Discord Music Bot</h3>
+                    <p class="project-date">Oct 2024 – Dec 2024</p>
+                    <p class="project-brief">Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Enigma: AI-Powered Discord Music Bot</h3>
+                        <p class="project-date">Oct 2024 – Dec 2024</p>
+                        <ul>
+                            <li>Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</li>
+                            <li>Developed features like song reordering, loop functionality, and feedback-based suggestions. Improved response latency by 30% through API optimization and maintained efficient collaboration using Git workflows.</li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="2">
+                <div class="card-preview">
+                    <h3>Recipe Recommender: Smart Cooking Assistant</h3>
+                    <p class="project-date">Aug 2024 – Oct 2024</p>
+                    <p class="project-brief">Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences.</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Recipe Recommender: Smart Cooking Assistant</h3>
+                        <p class="project-date">Aug 2024 – Oct 2024</p>
+                        <ul>
+                            <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
+                            <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
+                        </ul>
+                        <button class="close-details">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-container">
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Into to Deploying RAG Pipelines</h3>
+                <p>NVIDIA</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Accelerating End-End DS Workflows</h3>
+                <p>NVIDIA</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Getting Started with Deep Learning</h3>
+                <p>NVIDIA</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3>DevOps</h3>
+                <p>Student Development Program, SIESGST</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3> Intorduction to Data Science</h3>
+                <p>Cisco Networking Academy</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3> Data Analytics Essentials</h3>
+                <p>Cisco Networking Academy</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3> Intro to Cloud Semester 1 and 2</h3>
+                <p>AWS Academy Graduate</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Cloud Security Foundations</h3>
+                <p>AWS Academy Graduate</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="extracurricular">
+        <h2>Extracurricular Activities</h2>
+        <div class="extra-card">
+            <h3>Social Service: Girija Welfare Association</h3>
+            <p>2022 – 2024</p>
+            <ul>
+                <li>Actively interacted with the NGO's audience on social media platforms to foster engagement. </li>
+                <li>Facilitated direct communication with Public Relations Officer. Organizing events ensuring successful outcomes.</li> 
+                <li>Raised funds and other essential items required for the children and senior citizens at the NGO.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Kaustubh Sonawane. All rights reserved.</p>
+    </footer>
+
+    <script src="portfolio-js.js"></script>
+</body>
+</html>
