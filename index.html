@@ -45,7 +45,7 @@
     </section>
 
     <section id="about">
-        <h2>About Me</h2>
+        <h2>ABOUT ME</h2>
         <div class="about-content">
             <div class="skills-container">
                 <h3>Technical Skills</h3>
@@ -85,20 +85,25 @@
     </section>
 
     <section id="education">
-        <h2>Education</h2>
-        <div class="education-cards">
-            <div class="edu-card">
-                <h3>NC State University</h3>
-                <p>Master of Computer Science</p>
-                <p>Aug 2024 – May 2026</p>
-                <p>GPA: 3.55/4.0</p>
+        <h2>Education Timeline</h2>
+        <div class="timeline-grid">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-card left">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <h3>Master of Computer Science</h3>
+              <p>2024–2026 | GPA: 3.55/4.0</p>
             </div>
-            <div class="edu-card">
-                <h3>University of Mumbai</h3>
-                <p>Bachelor of Engineering - Computer Engineering</p>
-                <p>Aug 2020 – Jun 2024</p>
-                <p>CGPA: 8.83/10</p>
+          </div>
+      
+          <!-- Timeline Item 2 -->
+          <div class="timeline-card right">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <h3>Bachelor of Computer Engineering</h3>
+              <p>2020–2024 | CGPA: 8.83/10</p>
             </div>
+          </div>
         </div>
     </section>
 
@@ -162,22 +167,23 @@
 
     <!-- Replace the existing projects section in your HTML -->
     <section id="projects">
-        <h2>Projects and Publications</h2>
+        <h2>PROJECTS AND PUBLICATIONS</h2>
         <div class="project-grid">
             <div class="project-card" data-id="7">
                 <div class="card-preview">
-                    <h3>ExpenseLlama</h3>
+                    <h3>ExpenseLlama - LLM Powered Expense Tracking</h3>
                     <p class="project-date">Jan 2025 – Mar 2025</p>
-                    <p class="project-brief">Developed an expense tracking system leveraging LLM-based categorization (Llama3.2) using LangChain to classify transactions into categories using prompt engineering and validation techniques.</p>
+                    <p class="project-brief"><b>Key Skills:</b> LangChain, LLM, FastAPI, SQLite, SQLAlchemy, Dashboards, Pipelines, SQL, Python</p>
                 </div>
                 <div class="card-details">
                     <div class="details-content">
-                        <h3>ExpenseLlama</h3>
+                        <h3>ExpenseLlama - LLM Powered Expense Tracking</h3>
                         <p class="project-date">Oct 2024 – Dec 2024</p>
                         <ul>
                             <li>Developed an expense tracking system leveraging LLM-based categorization (Llama3.2) using LangChain to classify transactions into 8 categories with 93% accuracy using prompt engineering and validation techniques.</li>
                             <li>Built a FastAPI backend integrated with SQLite database managed by SQLAlchemy and Plotly for real-time data visualization, enabling efficient transaction processing with an average response time of 680ms.</li>
                             <li>Implemented data pipelines for automated categorization, ensuring seamless integration between user input forms and dashboards with responsive Jinja2 templates.</li>
+                            <li>Utilized Python, LangChain, Pandas, and Plotly to create a scalable system focusing on data manipulation, visualization, and machine learning-driven insights.</li>
                             <li>Enhanced financial analytics by combining AI categorization with SQL-based data aggregation, enabling users to track spending trends effectively.</li>
                         </ul>
                     </div>
@@ -186,45 +192,9 @@
 
             <div class="project-card" data-id="6">
                 <div class="card-preview">
-                    <h3>Enigma: AI-Powered Discord Music Bot</h3>
-                    <p class="project-date">Oct 2024 – Dec 2024</p>
-                    <p class="project-brief">Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Enigma: AI-Powered Discord Music Bot</h3>
-                        <p class="project-date">Oct 2024 – Dec 2024</p>
-                        <ul>
-                            <li>Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</li>
-                            <li>Developed features like song reordering, loop functionality, and feedback-based suggestions. Improved response latency by 30% through API optimization and maintained efficient collaboration using Git workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-id="5">
-                <div class="card-preview">
-                    <h3>Recipe Recommender: Smart Cooking Assistant</h3>
-                    <p class="project-date">Aug 2024 – Oct 2024</p>
-                    <p class="project-brief">Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences.</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Recipe Recommender: Smart Cooking Assistant</h3>
-                        <p class="project-date">Aug 2024 – Oct 2024</p>
-                        <ul>
-                            <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
-                            <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" data-id="4">
-                <div class="card-preview">
                     <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
                     <p class="project-date">Sep 2024 – Dec 2024</p>
-                    <p class="project-brief">Implemented and compared real-time object recognition models using PASCAL VOC 2007 Dataset.</p>
+                    <p class="project-brief"><b>Key Skills:</b> Pytorch, TensorFlow, CUDA, SSD (VGG16 as Backbone), YOLO, Experiment Design, Data Augumentation, hyperparameter tuning, stratified cross-validation, SQL, Python</p>
                     <!-- <button class="read-more">Read More</button> -->
                 </div>
                 <div class="card-details">
@@ -242,22 +212,61 @@
                 </div>
             </div>
 
+            <div class="project-card" data-id="5">
+                <div class="card-preview">
+                    <h3>Enigma: Discord Music Bot</h3>
+                    <p class="project-date">Oct 2024 – Dec 2024</p>
+                    <p class="project-brief"><b>Key Skills:</b> Git(Version Control), Github, Discord Bot Development, yt_dlp Integration, FFmpeg Audio Processing, pytest, Cross-Platform Deployment (Linux/Windows), Python</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Enigma: Discord Music Bot</h3>
+                        <p class="project-date">Oct 2024 – Dec 2024</p>
+                        <ul>
+                            <li>Enigma is a robust Discord music bot built in Python, leveraging discord.py, yt_dlp, and FFmpeg for real-time streaming and dynamic playlist management.</li>
+                            <li>It uses a curated dataset of 600 top Spotify tracks (2010–2019) to power features like song recommendations, looping, jumping, and shuffling.</li>
+                            <li>Automated formatting of Python code to conform to the PEP 8 style guide.</li>
+                            <li>Developed as a Master’s Software Engineering project by a team of 3, it exemplifies agile methodologies and effective Git version control.</li>
+                            <li>Optimized for cross-platform deployment on Linux and Windows, it also integrates best practices such as unit testing and continuous integration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-id="4">
+                <div class="card-preview">
+                    <h3>Recipe Recommender: Smart Cooking Assistant</h3>
+                    <p class="project-date">Aug 2024 – Oct 2024</p>
+                    <p class="project-brief"><b>Key Skills:</b> Git(Version Control), Github, Node.js, npm, MongoDB, JavaScript, Python, CSS, HTML</p>
+                </div>
+                <div class="card-details">
+                    <div class="details-content">
+                        <h3>Recipe Recommender: Smart Cooking Assistant</h3>
+                        <p class="project-date">Aug 2024 – Oct 2024</p>
+                        <ul>
+                            <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
+                            <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card" data-id="3">
                 <div class="card-preview">
                     <h3>Customer Behavior Analysis</h3>
                     <p class="project-date">Jul 2023 – May 2024</p>
-                    <p class="project-brief">Developed and compared recommendation models using various ML and DL Algorithms achieving 85+% accuracy.</p>
+                    <p class="project-brief"><b>Key Skills:</b> TensorFlow, PyTorch, recommendation systems ML (Random Forest, SVD, matrix factorization, PMF), and deep learning (CNNs, Stacked LSTM, Autoencoders), SQL, Python</p>
                 </div>
                 <div class="card-details">
                     <div class="details-content">
                         <h3>Customer Behavior Analysis</h3>
                         <p class="project-date">Jul 2023 – May 2024</p>
                         <ul>
-                            <li>Developed and compared recommendation models using Random Forest, SVD, MF, PMF, CNNs, Stacked LSTM, Autoencoders.</li>
+                            <li>Built recommendation system comparing ML (Random Forest, SVD, matrix factorization, PMF), and deep learning (CNNs, Stacked LSTM, Autoencoders)</li>
                             <li>Leveraged Scikit-learn, TensorFlow, and PyTorch to improve recommendations.</li>
-                            <li>Achieved 85% accuracy & 0.02 MSE.</li>
-                            <li>Applied SQL joins and aggregate queries to analyze product trends.</li>
-                            <li>Utilized Amazon Food Reviews dataset with 568,454 reviews.</li>
+                            <li>Developed evaluation metrics for model’s performance in capturing complex user-item interactions.</li>
+                            <li>Applied SQL joins and aggregate queries for feature extraction and to analyze product trends.</li>
+                            <li>Utilized Amazon Food Reviews dataset with 568,454 reviews, 74K products, 256K users.</li>
                         </ul>
                     </div>
                 </div>
@@ -267,7 +276,7 @@
                 <div class="card-preview">
                     <h3>Leafine - Plant Health Detection System</h3>
                     <p class="project-date">Feb 2023 – Apr 2023</p>
-                    <p class="project-brief">Published in JETIR – Oct [2023]. Integrated Image Processing using CNN Model.</p>
+                    <p class="project-brief">Published in Journal of Emerging Technologies and Innovative Research (JETIR) – Oct [2023]</p>
                 </div>
                 <div class="card-details">
                     <div class="details-content">
@@ -305,7 +314,7 @@
 
 
     <section id="certifications">
-        <h2>Certifications</h2>
+        <h2>CERTIFICATIONS</h2>
         <div class="cert-container">
             <div class="cert-card">
                 <i class="fas fa-certificate"></i>
@@ -351,7 +360,7 @@
     </section>
 
     <section id="extracurricular">
-        <h2>Extracurricular Activities</h2>
+        <h2>EXTRACURRICULAR ACTIVITIES</h2>
         <div class="extra-card">
             <h3>Social Service: Girija Welfare Association</h3>
             <p>2022 – 2024</p>
