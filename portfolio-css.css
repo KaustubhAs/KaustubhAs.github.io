@@ -352,7 +352,7 @@ section h2::after {
 }
   
   /* Add arrows to the left container (pointing right) */
-.timeline-card.left::before {
+/* .timeline-card.left::before {
     content: " ";
     height: 0;
     position: absolute;
@@ -363,10 +363,10 @@ section h2::after {
     border: medium solid white;
     border-width: 10px 0 10px 10px;
     border-color: transparent transparent transparent white;
-}
+} */
   
   /* Add arrows to the right container (pointing left) */
-.timeline-card.right::before {
+/* .timeline-card.right::before {
     content: " ";
     height: 0;
     position: absolute;
@@ -377,7 +377,7 @@ section h2::after {
     border: medium solid white;
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
-}
+} */
   
   /* Fix the circle for containers on the right side */
 .timeline-card.right .timeline-badge {
