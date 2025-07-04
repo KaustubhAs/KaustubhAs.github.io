@@ -3,378 +3,729 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaustubh Sonawane - Portfolio</title>
+    <title>Kaustubh Sonawane - AI/ML Engineer & Data Scientist</title>
     <link rel="stylesheet" href="portfolio-css.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="nav-content">
-            <!-- Add this inside the nav-content div, before the nav-links -->
-            <div class="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">KS</span>
+                <span class="logo-subtitle">Portfolio</span>
             </div>
-            <div class="nav-overlay"></div>
-            <div class="logo">KS</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#extracurricular">Extracurricular</a></li>
-            </ul>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
-    <section id="hero">
-        <!-- <div class="hero-photo">
-            <img src="assets\profile-pic.jpg" alt="Profile Photo">
-        </div> -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-container">
         <div class="hero-content">
-            <h1>Kaustubh Sonawane</h1>
-            <p class="typing-text">Master's Student | AI/ML Explorer | Data Science Enthusiast</p>
-            <div class="social-links">
-                <a href="mailto:ksonawa@ncsu.edu"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+13526792771"><i class="fas fa-phone"></i></a>
-                <a href="https://www.linkedin.com/in/iamkaustubhsonawane/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/KaustubhAs"><i class="fab fa-github"></i></a>
+                <div class="hero-badge">
+                    <i class="fas fa-code"></i>
+                    <span>AI/ML Engineer & Data Scientist</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Hi, I'm</span>
+                    <span class="title-name">Kaustubh Sonawane</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="typing-text">Master's Student | AI/ML Explorer | Data Science Enthusiast</span>
+                </p>
+                <p class="hero-description">
+                    Passionate about building intelligent systems and extracting insights from data. 
+                    Currently pursuing Master's in Computer Science at NC State University.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <!-- <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-avatar">
+                    <img src="assets/profile-pic.jpg" alt="Kaustubh Sonawane" class="profile-image">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <p>
+                        I'm a passionate Computer Science graduate student at NC State University, 
+                        specializing in Artificial Intelligence and Machine Learning. With a strong 
+                        foundation in data science and software engineering, I love building intelligent 
+                        systems that solve real-world problems.
+                    </p>
+                    <p>
+                        My journey in tech started with a Bachelor's in Computer Engineering from 
+                        the University of Mumbai, where I developed a keen interest in AI/ML and 
+                        data analytics. I've worked on various projects ranging from computer vision 
+                        to recommendation systems, always pushing the boundaries of what's possible.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Master's in Computer Science</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Raleigh, NC</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <span>AI/ML Development</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <h2>ABOUT ME</h2>
-        <div class="about-content">
-            <div class="skills-container">
-                <h3>Technical Skills</h3>
+    <!-- Skills Section -->
+    <section id="skills" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
+            <div class="skills-grid">
                 <div class="skill-category">
-                    <h4>Programming Languages</h4>
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Programming Languages
+                    </h3>
                     <div class="skill-items">
-                        <span>Python</span>
-                        <span>Kotlin</span>
-                        <span>SQL</span>
-                        <span>R</span>
-                        <span>C++</span>
-                        <span>HTML/CSS</span>
+                        <div class="skill-item" data-skill="Python">
+                            <div class="skill-icon">🐍</div>
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Kotlin">
+                            <div class="skill-icon">⚡</div>
+                            <span class="skill-name">Kotlin</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="SQL">
+                            <div class="skill-icon">🗄️</div>
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="R">
+                            <div class="skill-icon">📊</div>
+                            <span class="skill-name">R</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="C++">
+                            <div class="skill-icon">⚙️</div>
+                            <span class="skill-name">C++</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="75"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="skill-category">
-                    <h4>Tools & Frameworks</h4>
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i>
+                        Tools & Frameworks
+                    </h3>
                     <div class="skill-items">
-                        <span>Microsoft PowerBI</span>
-                        <span>Tableau</span>
-                        <span>PostgreSQL</span>
-                        <span>Microsoft AWS</span>
-                        <span>Azure</span>
-                        <span>Azure Machine Learning Studio</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
-                        <span>PyTorch</span>
-                        <span>TensorFlow</span>
-                        <span>Git</span>
-                        <span>GitHub</span>
-                        <span>SQLite</span>
-                        <span>SQLAlchemy</span>
-                        <span>LangChain</span>
+                        <div class="skill-item" data-skill="PyTorch">
+                            <div class="skill-icon">🔥</div>
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="TensorFlow">
+                            <div class="skill-icon">🧠</div>
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Docker">
+                            <div class="skill-icon">🐳</div>
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="AWS">
+                            <div class="skill-icon">☁️</div>
+                            <span class="skill-name">AWS</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Azure">
+                            <div class="skill-icon">🔷</div>
+                            <span class="skill-name">Azure</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-chart-line"></i>
+                        Data & Analytics
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="PowerBI">
+                            <div class="skill-icon">📈</div>
+                            <span class="skill-name">PowerBI</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Tableau">
+                            <div class="skill-icon">📊</div>
+                            <span class="skill-name">Tableau</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="PostgreSQL">
+                            <div class="skill-icon">🐘</div>
+                            <span class="skill-name">PostgreSQL</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="88"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="education">
-        <h2>EDUCATION TIMELINE</h2>
-        <div class="timeline-grid">
-          <!-- Timeline Item 1 -->
-          <div class="timeline-card left">
-            <div class="timeline-badge"></div>
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education Journey</h2>
+                <p class="section-subtitle">My academic path</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+        </div>
             <div class="timeline-content">
-              <h3>Master of Computer Science</h3>
-              <p>2024–2026 | GPA: 3.55/4.0</p>
+                        <div class="timeline-header">
+            <h3>Master of Computer Science</h3>
+                            <span class="timeline-period">2024 - 2026</span>
+                        </div>
+                        <div class="timeline-institution">North Carolina State University</div>
+                        <div class="timeline-details">
+                            <p>GPA: 3.55/4.0</p>
+                            <p>Focus: Artificial Intelligence, Machine Learning, Data Science</p>
+                        </div>
+                        <div class="timeline-badges">
+                            <span class="badge">AI/ML</span>
+                            <span class="badge">Data Science</span>
+                            <span class="badge">Research</span>
+            </div>
+            </div>
+        </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+            <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Bachelor of Engineering - Computer Engineering</h3>
+                            <span class="timeline-period">2020 - 2024</span>
+                        </div>
+                        <div class="timeline-institution">University of Mumbai</div>
+                        <div class="timeline-details">
+                            <p>CGPA: 8.83/10</p>
+                            <p>Focus: Computer Vision, Software Engineering, Data Structures</p>
+            </div>
+                        <div class="timeline-badges">
+                            <span class="badge">Computer Vision</span>
+                            <span class="badge">Software Engineering</span>
+                            <span class="badge">Research Publications</span>
+            </div>
+        </div>
             </div>
           </div>
+        </div>
+    </section>
       
-          <!-- Timeline Item 2 -->
-          <div class="timeline-card right">
-            <div class="timeline-badge"></div>
-            <div class="timeline-content">
-              <h3>Bachelor of Computer Engineering</h3>
-              <p>2020–2024 | CGPA: 8.83/10</p>
+    <!-- Projects Section -->
+    <section id="projects" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
             </div>
-          </div>
-        </div>
-    </section>
-
-
-    <!-- <section id="projects">
-        <h2>Projects and Publications</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
-                <p>Sep 2024 – Dec 2024</p>
-                <ul>
-                    <li>Implemented and compared real-time object recognition models using PASCAL VOC 2007 Dataset. With a focus on speed-accuracy trade-offs.</li>
-                    <li>Optimized model performance through data preprocessing, augmentation, and stratified 5-fold cross-validation while leveraging PyTorch and CUDA for efficient training</li>
-                    <li>Achieved YOLO(135 FPS, 75.7% mAP) vs. SSD(30 FPS, 91.7% precision)</li>
-                </ul>
+            <div class="projects-grid">
+                <div class="project-card" data-category="ai-ml">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div> -->
+                        </div>
+                        <div class="project-placeholder">
+                            <i class="fas fa-brain"></i>
+                        </div>
             </div>
-            <div class="project-card">
-                <h3>Customer Behavior Analysis</h3>
-                <p>Jul 2023 – May 2024</p>
-                <ul>
-                    <li>Developed recommendation models using Random Forest, SVD, MF, PMF, CNNs, Stacked LSTM, Autoencoders</li>
-                    <li>To perform comparative analysis of their accuracies and their ability to capture intricate user-item interactions.</li>
-                    <li> Utilized Amazon Food Reviews dataset, with 568,454 reviews, 74,258 products and 256,059 users. </li>
-                </ul>
+                    <div class="project-content">
+                        <div class="project-category">AI/ML</div>
+                        <h3 class="project-title">ExpenseLama - LLM Powered Expense Tracking</h3>
+                        <p class="project-description">
+                            Developed an intelligent expense tracking system using LLM-based categorization 
+                            with 93% accuracy, featuring real-time data visualization and automated pipelines.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Python</span>
             </div>
-            <div class="project-card">
-                <h3>Leafine - Plant Health Detection System</h3>
-                <p>Feb 2023 – Apr 2023</p>
-                <ul>
-                    <li>Published in Journal of Emerging Technologies and Innovative Research (JETIR) – Oct [2023]</li>
-                    <li>Integrated Image Processing using CNN Model with TensorFlow and OpenCV, to develop a mobile application that will help farmers and people who know little about plant disease, to identify its type and control the plant illness. </li>
-                </ul>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">93%</span>
+                                <span class="stat-label">Accuracy</span>
             </div>
-            <div class="project-card">
-                <h3>Hand Gesture Control</h3>
-                <p>Oct 2022 – Dec 2022</p>
-                <ul>
-                    <li>Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</li>
-                    <li>Developed a gesture control system using OpenCV, MediaPipe, Numpy and PyAutoGUI, enabling real-time interaction with a computer through hand gestures and to perform activities without a keyboard or mouse.</li>
-                    <li>The project is based on a problem statement by Smart India Hackathon (SIH).  </li>
-                </ul>
+                            <div class="stat">
+                                <span class="stat-value">680ms</span>
+                                <span class="stat-label">Response Time</span>
             </div>
-            <div class="project-card">
-                <h3>Enigma: AI-Powered Discord Music Bot</h3>
-                <p>Oct 2024 – Dec 2024</p>
-                <ul>
-                    <li>Built an AI-powered music bot for Discord, enabling seamless playback, queue management, and personalized song recommendations.</li>
-                    <li>Developed features like song reordering, loop functionality, and feedback-based suggestions. Improved response latency by 30% through API optimization and maintained efficient collaboration using Git workflows.</li>
-                </ul>
-            </div>
-            <div class="project-card">
-                <h3>Recipe Recommender: Smart Cooking Assistant</h3>
-                <p>Aug 2024 – Oct 2024</p>
-                <ul>
-                    <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
-                    <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
-                </ul>
             </div>
         </div>
-    </section> -->
-
-    <!-- Replace the existing projects section in your HTML -->
-    <section id="projects">
-        <h2>PROJECTS AND PUBLICATIONS</h2>
-        <div class="project-grid">
-            <div class="project-card" data-id="7">
-                <div class="card-preview">
-                    <h3>ExpenseLlama - LLM Powered Expense Tracking</h3>
-                    <p class="project-date">Jan 2025 – Mar 2025</p>
-                    <p class="project-brief"><b>Key Skills:</b> LangChain, LLM, FastAPI, SQLite, SQLAlchemy, Dashboards, Pipelines, SQL, Python</p>
                 </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>ExpenseLlama - LLM Powered Expense Tracking</h3>
-                        <p class="project-date">Oct 2024 – Dec 2024</p>
-                        <ul>
-                            <li>Developed an expense tracking system leveraging LLM-based categorization (Llama3.2) using LangChain to classify transactions into 8 categories with 93% accuracy using prompt engineering and validation techniques.</li>
-                            <li>Built a FastAPI backend integrated with SQLite database managed by SQLAlchemy and Plotly for real-time data visualization, enabling efficient transaction processing with an average response time of 680ms.</li>
-                            <li>Implemented data pipelines for automated categorization, ensuring seamless integration between user input forms and dashboards with responsive Jinja2 templates.</li>
-                            <li>Utilized Python, LangChain, Pandas, and Plotly to create a scalable system focusing on data manipulation, visualization, and machine learning-driven insights.</li>
-                            <li>Enhanced financial analytics by combining AI categorization with SQL-based data aggregation, enabling users to track spending trends effectively.</li>
-                        </ul>
+
+                <div class="project-card" data-category="computer-vision">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div> -->
+                        </div>
+                        <div class="project-placeholder">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Computer Vision</div>
+                        <h3 class="project-title">Real-Time Object Recognition Analysis</h3>
+                        <p class="project-description">
+                            Comparative analysis of YOLO vs SSD models using PASCAL VOC dataset, 
+                            achieving optimal speed-accuracy trade-offs for real-time applications.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">YOLO & SSD</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">135 FPS</span>
+                                <span class="stat-label">YOLO Speed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">91.7%</span>
+                                <span class="stat-label">SSD Precision</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card" data-id="6">
-                <div class="card-preview">
-                    <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
-                    <p class="project-date">Sep 2024 – Dec 2024</p>
-                    <p class="project-brief"><b>Key Skills:</b> Pytorch, TensorFlow, CUDA, SSD (VGG16 as Backbone), YOLO, Experiment Design, Data Augumentation, hyperparameter tuning, stratified cross-validation, SQL, Python</p>
-                    <!-- <button class="read-more">Read More</button> -->
+                <div class="project-card" data-category="recommendation">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div> -->
+                        </div>
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Recommendation Systems</div>
+                        <h3 class="project-title">Customer Behavior Analysis</h3>
+                        <p class="project-description">
+                            Built comprehensive recommendation system comparing ML and deep learning 
+                            approaches using Amazon Food Reviews dataset with 568K+ reviews.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">LSTM</span>
+                            <span class="tech-tag">Autoencoders</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">568K+</span>
+                                <span class="stat-label">Reviews</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">256K+</span>
+                                <span class="stat-label">Users</span>
+            </div>
                 </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Comparative Analysis of Real Time Object Recognition Algorithms</h3>
-                        <p class="project-date">Sep 2024 – Dec 2024</p>
-                        <ul>
-                            <li>Implemented and compared real-time object recognition models using the PASCAL VOC 2007 (9,600+ images) Dataset.</li>
-                            <li>Optimized performance using data preprocessing, augmentation, and stratified 5-fold cross validation.</li>
-                            <li>Leveraged PyTorch and CUDA for efficiency.</li>
-                            <li>Achieved a speed-accuracy trade-off: YOLO(135 FPS, 75.7% mAP) vs. SSD(30 FPS, 91.7% precision).</li>
-                        </ul>
-                        <!-- <button class="close-details">Close</button> -->
                     </div>
                 </div>
-            </div>
 
-            <div class="project-card" data-id="5">
-                <div class="card-preview">
-                    <h3>Enigma: Discord Music Bot</h3>
-                    <p class="project-date">Oct 2024 – Dec 2024</p>
-                    <p class="project-brief"><b>Key Skills:</b> Git(Version Control), Github, Discord Bot Development, yt_dlp Integration, FFmpeg Audio Processing, pytest, Cross-Platform Deployment (Linux/Windows), Python</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Enigma: Discord Music Bot</h3>
-                        <p class="project-date">Oct 2024 – Dec 2024</p>
-                        <ul>
-                            <li>Enigma is a robust Discord music bot built in Python, leveraging discord.py, yt_dlp, and FFmpeg for real-time streaming and dynamic playlist management.</li>
-                            <li>It uses a curated dataset of 600 top Spotify tracks (2010–2019) to power features like song recommendations, looping, jumping, and shuffling.</li>
-                            <li>Automated formatting of Python code to conform to the PEP 8 style guide.</li>
-                            <li>Developed as a Master’s Software Engineering project by a team of 3, it exemplifies agile methodologies and effective Git version control.</li>
-                            <li>Optimized for cross-platform deployment on Linux and Windows, it also integrates best practices such as unit testing and continuous integration.</li>
-                        </ul>
+                <div class="project-card" data-category="bot">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div> -->
+                        </div>
+                        <div class="project-placeholder">
+                            <i class="fab fa-discord"></i>
+                        </div>
                     </div>
-                </div>
+                    <div class="project-content">
+                        <div class="project-category">Discord Bot</div>
+                        <h3 class="project-title">Enigma: AI-Powered Music Bot</h3>
+                        <p class="project-description">
+                            Developed a sophisticated Discord music bot with AI-powered recommendations, 
+                            featuring real-time streaming and dynamic playlist management.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Discord.py</span>
+                            <span class="tech-tag">FFmpeg</span>
+                            <span class="tech-tag">yt-dlp</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">600+</span>
+                                <span class="stat-label">Tracks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">30%</span>
+                                <span class="stat-label">Faster Response</span>
             </div>
-
-            <div class="project-card" data-id="4">
-                <div class="card-preview">
-                    <h3>Recipe Recommender: Smart Cooking Assistant</h3>
-                    <p class="project-date">Aug 2024 – Oct 2024</p>
-                    <p class="project-brief"><b>Key Skills:</b> Git(Version Control), Github, Node.js, npm, MongoDB, JavaScript, Python, CSS, HTML</p>
                 </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Recipe Recommender: Smart Cooking Assistant</h3>
-                        <p class="project-date">Aug 2024 – Oct 2024</p>
-                        <ul>
-                            <li>Contributed to enhancing a GitHub-hosted recipe recommendation system that suggests dishes based on ingredients, cooking time, and dietary preferences. Added features like recipe name search, dark mode UI, and user reviews</li>
-                            <li>Optimized MongoDB queries, cutting API response time by 35%, and ensured long-term compatibility with updated dependencies.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-id="3">
-                <div class="card-preview">
-                    <h3>Customer Behavior Analysis</h3>
-                    <p class="project-date">Jul 2023 – May 2024</p>
-                    <p class="project-brief"><b>Key Skills:</b> TensorFlow, PyTorch, recommendation systems ML (Random Forest, SVD, matrix factorization, PMF), and deep learning (CNNs, Stacked LSTM, Autoencoders), SQL, Python</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Customer Behavior Analysis</h3>
-                        <p class="project-date">Jul 2023 – May 2024</p>
-                        <ul>
-                            <li>Built recommendation system comparing ML (Random Forest, SVD, matrix factorization, PMF), and deep learning (CNNs, Stacked LSTM, Autoencoders)</li>
-                            <li>Leveraged Scikit-learn, TensorFlow, and PyTorch to improve recommendations.</li>
-                            <li>Developed evaluation metrics for model’s performance in capturing complex user-item interactions.</li>
-                            <li>Applied SQL joins and aggregate queries for feature extraction and to analyze product trends.</li>
-                            <li>Utilized Amazon Food Reviews dataset with 568,454 reviews, 74K products, 256K users.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-id="2">
-                <div class="card-preview">
-                    <h3>Leafine - Plant Health Detection System</h3>
-                    <p class="project-date">Feb 2023 – Apr 2023</p>
-                    <p class="project-brief">Published in Journal of Emerging Technologies and Innovative Research (JETIR) – Oct [2023]</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Leafine - Plant Health Detection System</h3>
-                        <p class="project-date">Feb 2023 – Apr 2023</p>
-                        <ul>
-                            <li>Published research paper in JETIR – Oct [2023].</li>
-                            <li>Integrated Image Processing using CNN Model with TensorFlow and OpenCV.</li>
-                            <li>Developed a mobile application for plant disease detection, that will help farmers and people who know little about plant disease, to identify its type and control the plant illness. </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-id="1">
-                <div class="card-preview">
-                    <h3>Hand Gesture Control</h3>
-                    <p class="project-date">Oct 2022 – Dec 2022</p>
-                    <p class="project-brief">Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</p>
-                </div>
-                <div class="card-details">
-                    <div class="details-content">
-                        <h3>Hand Gesture Control</h3>
-                        <p class="project-date">Oct 2022 – Dec 2022</p>
-                        <ul>
-                            <li>Published in International Journal of Innovative Science and Research Technology (IJISRT) – Nov [2023]</li>
-                            <li>Developed a gesture control system using OpenCV, MediaPipe, Numpy and PyAutoGUI, enabling real-time interaction with a computer through hand gestures and to perform activities without a keyboard or mouse.</li>
-                            <li>The project is based on a problem statement by Smart India Hackathon (SIH).  </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">Professional Achievements</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Intro to Deploying RAG Pipelines</h3>
+                        <p class="cert-issuer">NVIDIA</p>
+                        <div class="cert-badge">AI/ML</div>
+                    </div>
+                </div>
 
-    <section id="certifications">
-        <h2>CERTIFICATIONS</h2>
-        <div class="cert-container">
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Introduction to Deploying RAG Pipelines for Production at Scale</h3>
-                <p>NVIDIA</p>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Accelerating End-End DS Workflows</h3>
+                        <p class="cert-issuer">NVIDIA</p>
+                        <div class="cert-badge">Data Science</div>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Getting Started with Deep Learning</h3>
+                        <p class="cert-issuer">NVIDIA</p>
+                        <div class="cert-badge">Deep Learning</div>
             </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Accelerating End to End Data Science Workflows</h3>
-                <p>NVIDIA</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>DevOps</h3>
+                        <p class="cert-issuer">Student Development Program, SIESGST</p>
+                        <div class="cert-badge">DevOps</div>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Introduction to Data Science</h3>
+                        <p class="cert-issuer">Cisco Networking Academy</p>
+                        <div class="cert-badge">Data Science</div>
             </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Getting Started with Deep Learning</h3>
-                <p>NVIDIA</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Data Analytics Essentials</h3>
+                        <p class="cert-issuer">Cisco Networking Academy</p>
+                        <div class="cert-badge">Analytics</div>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Intro to Cloud Semester 1 and 2</h3>
+                        <p class="cert-issuer">AWS Academy Graduate</p>
+                        <div class="cert-badge">Cloud</div>
             </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3>DevOps</h3>
-                <p>Student Development Program, SIESGST</p>
-            </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Introduction to Data Science</h3>
-                <p>Cisco Networking Academy</p>
-            </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Data Analytics Essentials</h3>
-                <p>Cisco Networking Academy</p>
-            </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3> Introduction to Cloud Semester 1 and 2</h3>
-                <p>AWS Academy Graduate</p>
-            </div>
-            <div class="cert-card">
-                <i class="fas fa-certificate"></i>
-                <h3>Cloud Security Foundations</h3>
-                <p>AWS Academy Graduate</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Cloud Security Foundations</h3>
+                        <p class="cert-issuer">AWS Academy Graduate</p>
+                        <div class="cert-badge">Security</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="extracurricular">
-        <h2>EXTRACURRICULAR ACTIVITIES</h2>
-        <div class="extra-card">
-            <h3>Social Service: Girija Welfare Association</h3>
-            <p>2022 – 2024</p>
-            <ul>
-                <li>Actively interacted with the NGO's audience on social media platforms to foster engagement. </li>
-                <li>Facilitated direct communication with Public Relations Officer. Organizing events ensuring successful outcomes.</li> 
-                <li>Raised funds and other essential items required for the children and senior citizens at the NGO.</li>
-            </ul>
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always interested in new opportunities and collaborations. 
+                        Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Email</h4>
+                                <a href="mailto:ksonawa@ncsu.edu">ksonawa@ncsu.edu</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Phone</h4>
+                                <a href="tel:+13526792771">+1 (352) 679-2771</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Location</h4>
+                                <span>Raleigh, NC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/iamkaustubhsonawane/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/KaustubhAs" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+            </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+            </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>© 2025 Kaustubh Sonawane. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">KS</span>
+                    <p>AI/ML Engineer & Data Scientist</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/iamkaustubhsonawane/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/KaustubhAs" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kaustubh Sonawane. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="portfolio-js.js"></script>
 </body>
