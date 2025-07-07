@@ -3,27 +3,29 @@
 /* CSS Variables for consistent theming */
 :root {
     /* Color Palette */
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary-color: #7c3aed;
-    --accent-color: #06b6d4;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --error-color: #ef4444;
+    --primary-color: #3a5ca8; /* Soft blue */
+    --primary-dark: #22335c;  /* Deep blue */
+    --secondary-color: #6b4fa1; /* Soft purple */
+    --accent-color: #3bb6b0; /* Teal accent */
+    --success-color: #4ecdc4;
+    --warning-color: #f7b731;
+    --error-color: #ee5253;
     
-    /* Neutral Colors */
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --text-light: #9ca3af;
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-dark: #111827;
-    --bg-dark-secondary: #1f2937;
+    /* Neural Backgrounds */
+    --bg-primary: #101624; /* Deep navy */
+    --bg-secondary: #1a2236; /* Slightly lighter navy */
+    --bg-dark: #181c2a;
+    --bg-dark-secondary: #232a3d;
+    
+    /* Text Colors */
+    --text-primary: #e6eaf3;
+    --text-secondary: #b3b9c9;
+    --text-light: #8fa1c7;
     
     /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(30, 40, 60, 0.12);
+    --glass-border: rgba(120, 180, 255, 0.10);
+    --glass-shadow: 0 8px 32px rgba(60, 100, 180, 0.08);
     
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -45,15 +47,15 @@
     --radius-2xl: 1.5rem;
     
     /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --shadow-sm: 0 1px 2px rgba(60, 100, 180, 0.05);
+    --shadow-md: 0 4px 6px #3c64b414;
+    --shadow-lg: 0 10px 15px rgba(60, 100, 180, 0.10);
+    --shadow-xl: 0 20px 25px rgba(60, 100, 180, 0.13);
     
     /* Transitions */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    --transition-fast: 0.15s cubic-bezier(0.4,0,0.2,1);
+    --transition-normal: 0.3s cubic-bezier(0.4,0,0.2,1);
+    --transition-slow: 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* Reset and Base Styles */
@@ -177,20 +179,16 @@ body {
 }
 
 .nav-link {
+    color: #3a5ca8;
     text-decoration: none;
-    color: var(--text-primary);
     font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast);
     position: relative;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary-color);
-    background: rgba(37, 99, 235, 0.1);
+    color: #3bb6b0;
 }
 
 .nav-link::after {
@@ -520,7 +518,7 @@ body {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
-    color: var(--primary-color);
+    color: white;
 }
 
 .about-text p {
@@ -777,7 +775,7 @@ body {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #3a5ca8;
 }
 
 .timeline-period {
@@ -792,12 +790,12 @@ body {
 .timeline-institution {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--secondary-color);
+    color: #3a5ca8;
     margin-bottom: var(--spacing-md);
 }
 
 .timeline-details p {
-    color: var(--text-secondary);
+    color: #3a5ca8;
     margin-bottom: 0.5rem;
 }
 
@@ -1008,13 +1006,12 @@ body {
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: #3a5ca8;
     margin-bottom: 0.5rem;
-    line-height: 1.3;
 }
 
 .cert-issuer {
-    color: var(--text-secondary);
+    color: #3a5ca8;
     font-size: 0.9rem;
     margin-bottom: var(--spacing-sm);
 }
@@ -1686,5 +1683,54 @@ body {
     
     .section {
         padding: var(--spacing-lg) 0;
+    }
+}
+
+/* Special Neural Network Layer Dividers */
+.nn-layer-divider {
+    width: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+.nn-layer-divider svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+}
+.nn-layer-projects-top {
+    margin-top: 0;
+    margin-bottom: -1.5rem;
+}
+.nn-layer-projects-bottom {
+    margin-top: -1.5rem;
+    margin-bottom: 0;
+}
+
+/* Special Projects Neural Layer */
+.nn-projects-layer {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(120deg, var(--bg-dark) 80%, var(--bg-secondary) 100%);
+    box-shadow: 0 4px 32px 0 rgba(60,100,180,0.07);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(120,180,255,0.08);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    transition: box-shadow var(--transition-normal), background var(--transition-normal);
+}
+
+@media (max-width: 1024px) {
+    .nn-layer-divider svg {
+        height: 40px;
+    }
+    .nn-projects-layer {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 }
