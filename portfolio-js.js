@@ -806,46 +806,35 @@ backToTopBtn.addEventListener('click', () => {
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 
-// if (contactForm) {
-//     contactForm.addEventListener('submit', (e) => {
-//         e.preventDefault();
-        
-//         // Get form data
-//         const formData = new FormData(contactForm);
-//         const name = formData.get('name');
-//         const email = formData.get('email');
-//         const subject = formData.get('subject');
-//         const message = formData.get('message');
-        
-//         // Simple validation
-//         if (!name || !email || !subject || !message) {
-//             alert('Please fill in all fields');
-//             return;
-//         }
-        
-//         // Email validation
-//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//         if (!emailRegex.test(email)) {
-//             alert('Please enter a valid email address');
-//             return;
-//         }
-        
-//         // Simulate form submission
-//         const submitBtn = contactForm.querySelector('button[type="submit"]');
-//         const originalText = submitBtn.innerHTML;
-        
-//         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-//         submitBtn.disabled = true;
-        
-//         // Simulate API call
-//         setTimeout(() => {
-//             alert('Thank you for your message! I will get back to you soon.');
-//             contactForm.reset();
-//             submitBtn.innerHTML = originalText;
-//             submitBtn.disabled = false;
-//         }, 2000);
-//     });
-// }
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                contactForm.innerHTML = "<p style='color: #10b981; font-size: 1.2em;'>Thank you for your message! I will get back to you soon.</p>";
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Oops! There was a problem submitting your form");
+                    }
+                });
+            }
+        }).catch(error => {
+            alert("Oops! There was a problem submitting your form");
+        });
+    });
+}
 
 // Parallax effect for hero section
 const heroBackground = document.querySelector('.hero-particles');
