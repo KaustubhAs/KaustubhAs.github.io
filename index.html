@@ -1,930 +1,1218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaustubh Sonawane - AI/ML Engineer & Data Scientist</title>
-    <link rel="stylesheet" href="portfolio-css.css">
+    <title>Kaustubh Sonawane - AI/ML Engineer</title>
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            /* Zinc 950 base */
+            --bg-main: #09090b;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            
+            /* Accents */
+            --accent-neon: #00f0ff;
+            --accent-neon-rgb: 0, 240, 255;
+            --accent-purple: #a855f7;
+            --accent-purple-rgb: 168, 85, 247;
+            
+            /* Typography */
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background-color: rgba(var(--accent-purple-rgb), 0.3);
+            color: var(--accent-neon);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Targeted Section Spacing --- */
+        /* Pushes the Projects section away from About Me (top) and Contact (bottom) */
+        #work {
+            margin-top: 5rem !important;
+            margin-bottom: 5rem !important;
+        }
+
+        /* --- Loading Screen --- */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-main);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-neon);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 15px rgba(var(--accent-neon-rgb), 0.2);
+        }
+        
+        .loader-text {
+            color: var(--accent-purple);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+        }
+
+        /* --- Layout & Typography --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 8rem 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-neon-dim);
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 20px var(--accent-neon-dim);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(9, 9, 11, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-neon);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Aurora Background Effect --- */
+        .aurora-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background-color: transparent;
+            pointer-events: none;
+        }
+        
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.2; /* Low opacity ensures text remains readable */
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+        }
+        
+        .aurora-blob-1 {
+            width: 45vw; height: 45vw;
+            background: var(--accent-neon);
+            top: -10vw; left: -10vw;
+            animation: aurora-float-1 14s infinite alternate ease-in-out;
+        }
+        
+        .aurora-blob-2 {
+            width: 40vw; height: 40vw;
+            background: #8b5cf6; /* Purple */
+            bottom: -10vw; right: -10vw;
+            animation: aurora-float-2 18s infinite alternate ease-in-out;
+        }
+        
+        .aurora-blob-3 {
+            width: 50vw; height: 50vw;
+            background: #3b82f6; /* Blue */
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: aurora-float-3 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes aurora-float-1 { 
+            0% { transform: translate(0, 0) scale(1); } 
+            100% { transform: translate(15vw, 10vw) scale(1.1); } 
+        }
+        @keyframes aurora-float-2 { 
+            0% { transform: translate(0, 0) scale(1); } 
+            100% { transform: translate(-10vw, -15vw) scale(1.2); } 
+        }
+        @keyframes aurora-float-3 { 
+            0% { transform: translate(-50%, -50%) scale(1); } 
+            100% { transform: translate(-40%, -60%) scale(1.15); } 
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-top: 5rem;
+        }
+
+        .hero-content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(var(--accent-purple-rgb), 0.15) 0%, rgba(var(--bg-main), 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.2s;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.4s;
+        }
+
+        /* --- Marquee Section --- */
+        .marquee-wrapper {
+            width: 100%;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.01);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.6s;
+            margin-top: auto; /* Pushes marquee to the bottom of the hero */
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding-right: 3rem;
+        }
+
+        .marquee-item {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .marquee-item:hover {
+            color: var(--accent-neon);
+            text-shadow: 0 0 15px rgba(var(--accent-neon-rgb), 0.5);
+        }
+
+        .marquee-dot {
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .headshot-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 2rem;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .headshot-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 40px rgba(9, 9, 11, 0.8);
+            pointer-events: none;
+        }
+
+        .headshot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .headshot-wrapper:hover .headshot-image {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+
+        /* --- Bento Box Work Section --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 320px; /* Fixed row height for alignment */
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        /* Specific Grid Spans for Perfect Alignment */
+        .bento-wide { grid-column: span 2; }
+        .bento-tall { grid-row: span 2; }
+        .bento-full { grid-column: span 3; }
+
+        /* Hover Glow Effects */
+        .bento-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                        rgba(var(--accent-purple-rgb), 0.1), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bento-item:hover {
+            border-color: rgba(var(--accent-neon-rgb), 0.4);
+            box-shadow: 0 10px 40px -10px rgba(var(--accent-purple-rgb), 0.2), 
+                        inset 0 0 20px rgba(var(--accent-neon-rgb), 0.05);
+            transform: translateY(-4px);
+        }
+
+        .bento-item:hover::before {
+            opacity: 1;
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-category {
+            font-size: 0.875rem;
+            color: var(--accent-neon);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: auto; /* Pushes tags to bottom */
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .bento-tall .project-description {
+            -webkit-line-clamp: 10;
+        }
+        
+        .bento-full .project-description {
+            -webkit-line-clamp: 2;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .bento-item:hover .tech-tag {
+            border-color: rgba(var(--accent-purple-rgb), 0.3);
+            color: var(--text-primary);
+        }
+
+        .project-icon {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+            transition: all 0.4s ease;
+        }
+
+        .bento-item:hover .project-icon {
+            opacity: 0.1;
+            transform: rotate(0deg) scale(1.1);
+            color: var(--accent-purple);
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control::placeholder {
+            color: rgba(161, 161, 170, 0.5);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(var(--accent-neon-rgb), 0.5);
+            box-shadow: 0 0 20px rgba(var(--accent-neon-rgb), 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon));
+            color: #09090b;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(var(--accent-purple-rgb), 0.3);
+        }
+
+        /* --- Back to Top Button --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--accent-neon);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: rgba(var(--accent-neon-rgb), 0.1);
+            box-shadow: 0 0 15px rgba(var(--accent-neon-rgb), 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* --- Minimal Footer --- */
+        .minimal-footer {
+            padding: 6rem 0 4rem;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, rgba(9,9,11,0) 0%, rgba(var(--accent-purple-rgb), 0.05) 100%);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .social-link {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-purple));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .social-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .footer-bottom {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-wide, .bento-full {
+                grid-column: span 2;
+            }
+            .bento-tall {
+                grid-row: span 2;
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(9, 9, 11, 0.95);
+                backdrop-filter: blur(15px);
+                border-bottom: 1px solid var(--border-color);
+                padding: 2rem;
+                gap: 1.5rem;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease;
+            }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(280px, auto);
+            }
+            .bento-item, .bento-wide, .bento-tall, .bento-full {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                min-height: 280px;
+            }
+            .bento-full .project-description {
+                -webkit-line-clamp: 4;
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .headshot-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .marquee-item {
+                font-size: 1.25rem;
+                gap: 2rem;
+            }
+            .marquee-content {
+                gap: 2rem;
+                padding-right: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+
     <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <div class="loader-text">Loading...</div>
-        </div>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-circle"></div>
+        <div class="loader-text">Loading...</div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">KS</span>
-                <span class="logo-subtitle">Portfolio</span>
-            </div>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#home" class="logo">
+                <div class="logo-dot"></div>
+                Kaustubh S.
+            </a>
             
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#work" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
-            </div>
-
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-particles"></div>
+    <section class="hero" id="home">
+        <div class="hero-bg-glow"></div>
+        
+        <div class="hero-content-wrapper container">
+            <h1 class="hero-title">Kaustubh Sonawane</h1>
+            <p class="hero-subtitle">Building intelligent systems at the intersection of Data Science and Machine Learning.</p>
+            <div>
+                <a href="https://www.linkedin.com/in/iamkaustubhs/" class="btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/KaustubhAs" class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
         </div>
-        <div class="hero-container">
-        <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-code"></i>
-                    <span>AI/ML Engineer & Data Scientist</span>
+        
+        <!-- Scrolling Marquee -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- Content is duplicated to create a seamless loop -->
+                <div class="marquee-content">
+                    <span class="marquee-item">Machine Learning <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Python <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">RAG Systems <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">PySpark <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Deep Learning <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">NLP <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Model Context Protocol <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Data Science <span class="marquee-dot">•</span></span>
                 </div>
-                <h1 class="hero-title">
-                    <span class="title-line">Hi, I'm</span>
-                    <span class="title-name">Kaustubh Sonawane</span>
-                </h1>
-                <p class="hero-subtitle">
-                    <span class="typing-text">Master's Student | AI/ML Explorer | Data Science Enthusiast</span>
+                <!-- Duplicate for Loop -->
+                <div class="marquee-content" aria-hidden="true">
+                    <span class="marquee-item">Machine Learning <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Python <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">RAG Systems <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">PySpark <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Deep Learning <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">NLP <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Model Context Protocol <span class="marquee-dot">•</span></span>
+                    <span class="marquee-item">Data Science <span class="marquee-dot">•</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container reveal">
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I am an <strong>AI/ML Engineer and Data Scientist</strong> passionate about building intelligent, scalable systems that solve complex real-world problems. 
                 </p>
-                <p class="hero-description">
-                    Passionate about building intelligent systems and extracting insights from data. 
-                    Currently pursuing Master's in Computer Science at NC State University.
+                <p>
+                    My expertise lies in bridging the gap between cutting-edge research and production-ready applications. From developing <strong>Retrieval-Augmented Generation (RAG)</strong> systems for biomedical data to engineering automated <strong>Technical Debt refactoring tools</strong>, I thrive on pushing the boundaries of what's possible with code and data.
                 </p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        View Projects
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">7+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">8+</span>
-                        <span class="stat-label">Certifications</span>
-                    </div>
-                    <!-- <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div> -->
-                </div>
+                <p>
+                    When I'm not training models or optimizing data pipelines, I'm exploring the latest advancements in natural language processing, contributing to open-source, or experimenting with new generative AI paradigms.
+                </p>
             </div>
-            <div class="hero-visual">
-                <div class="hero-avatar">
-                    <img src="assets/profile-pic.jpg" alt="Kaustubh Sonawane" class="profile-image">
-                </div>
+            
+            <div class="headshot-wrapper">
+                <!-- Fallback to a sleek texture if no photo is given -->
+                <img src="assets\profile-pic.jpg" alt="Tech Abstract" class="headshot-image">
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who I Am</h3>
-                    <p>
-                        I'm a passionate Computer Science graduate student at NC State University, 
-                        specializing in Artificial Intelligence and Machine Learning. With a strong 
-                        foundation in data science and software engineering, I love building intelligent 
-                        systems that solve real-world problems.
+    <!-- Work / Projects Section -->
+    <section id="work" class="container reveal">
+        <h2 class="section-title">Selected Work</h2>
+        
+        <div class="bento-grid">
+            
+            <!-- Project 1: Wide Card (Row 1, Col 1 & 2) -->
+            <div class="bento-item bento-wide">
+                <div class="bento-content">
+                    <div class="project-category">AI/ML & Developer Tools</div>
+                    <h3 class="project-title">AI-Powered Technical Debt Agent</h3>
+                    <p class="project-description">
+                        Engineered a Model Context Protocol (MCP) server and GitHub Actions workflow integrating with VS Code and Copilot. Fine-tuned GPT-4.1-mini models to automatically detect, classify, and refactor technical debt across 5 severity levels using a comprehensive 3-step workflow.
                     </p>
-                    <p>
-                        My journey in tech started with a Bachelor's in Computer Engineering from 
-                        the University of Mumbai, where I developed a keen interest in AI/ML and 
-                        data analytics. I've worked on various projects ranging from computer vision 
-                        to recommendation systems, always pushing the boundaries of what's possible.
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MCP</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                    </div>
+                </div>
+                <i class="fas fa-robot project-icon"></i>
+            </div>
+
+            <!-- Project 2: Tall Card (Row 1 & 2, Col 3) -->
+            <div class="bento-item bento-tall">
+                <div class="bento-content">
+                    <div class="project-category">AI/ML & Data Engineering</div>
+                    <h3 class="project-title">Biomedical Assistant RAG</h3>
+                    <p class="project-description">
+                        Engineered a distributed PySpark data preprocessing pipeline (1M+ records) with shuffle-aware partitioning and partitioned Parquet output to power a biomedical RAG system integrating a Knowledge Graph and LLMs. Delivered >95% reliable responses across 10K+ biomedical entities and 4,920 disease-symptom relationships.
                     </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Master's in Computer Science</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Raleigh, NC</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-code"></i>
-                            <span>AI/ML Development</span>
-                        </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Knowledge Graph</span>
+                        <span class="tech-tag">Streamlit</span>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="image-placeholder">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                    </div>
-                </div>
+                <i class="fas fa-hospital project-icon"></i>
             </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">Technologies I work with</p>
+            <!-- Project 3: Standard Card (Row 2, Col 1) -->
+            <div class="bento-item">
+                <div class="bento-content">
+                    <div class="project-category">Predictive Modeling</div>
+                    <h3 class="project-title">Customer Behavior Analysis</h3>
+                    <p class="project-description">
+                        Built comprehensive recommendation system comparing ML and deep learning approaches using Amazon Food Reviews dataset with 568K+ reviews.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Scikit-Learn</span>
+                        <span class="tech-tag">XGBoost</span>
+                    </div>
+                </div>
+                <i class="fas fa-chart-line project-icon"></i>
             </div>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i>
-                        Programming Languages
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="Python">
-                            <div class="skill-icon">🐍</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Python</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Kotlin">
-                            <div class="skill-icon">⚡</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Kotlin</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="SQL">
-                            <div class="skill-icon">🗄️</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">SQL</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="R">
-                            <div class="skill-icon">📊</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">R</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="C++">
-                            <div class="skill-icon">⚙️</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">C++</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-brain"></i>
-                        AI/ML Frameworks
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="PyTorch">
-                            <div class="skill-icon">🔥</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">PyTorch</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="TensorFlow">
-                            <div class="skill-icon">🧠</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">TensorFlow</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Keras">
-                            <div class="skill-icon">🔧</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Keras</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Scikit-learn">
-                            <div class="skill-icon">📊</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Scikit-learn</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Hugging Face">
-                            <div class="skill-icon">🤗</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Hugging Face</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="LangChain">
-                            <div class="skill-icon">🔗</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">LangChain</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="CUDA">
-                            <div class="skill-icon">⚡</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">CUDA</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
+            <!-- Project 4: Standard Card (Row 2, Col 2) -->
+            <div class="bento-item">
+                <div class="bento-content">
+                    <div class="project-category">Computer Vision</div>
+                    <h3 class="project-title">Defect Detection</h3>
+                    <p class="project-description">
+                        Developed an intelligent expense tracking system using LLM-based categorization with 93% accuracy, featuring real-time data visualization and automated pipelines.                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">SQLite</span>
                     </div>
                 </div>
-
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-tools"></i>
-                        Development Tools & Cloud
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="Azure">
-                            <div class="skill-icon">🔷</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Azure</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="AWS">
-                            <div class="skill-icon">☁️</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">AWS</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="FastAPI">
-                            <div class="skill-icon">🚀</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">FastAPI</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Pytest">
-                            <div class="skill-icon">🧪</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Pytest</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Docker">
-                            <div class="skill-icon">🐳</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Docker</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Git">
-                            <div class="skill-icon">📝</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Git</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Github">
-                            <div class="skill-icon">🐙</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Github</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Jupyter">
-                            <div class="skill-icon">📓</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Jupyter</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Streamlit">
-                            <div class="skill-icon">📱</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Streamlit</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-chart-line"></i>
-                        Data & Analytics
-                    </h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="PowerBI">
-                            <div class="skill-icon">📈</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">PowerBI</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Tableau">
-                            <div class="skill-icon">📊</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Tableau</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="PostgreSQL">
-                            <div class="skill-icon">🐘</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">PostgreSQL</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="SQLite">
-                            <div class="skill-icon">💾</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">SQLite</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="SQLAlchemy">
-                            <div class="skill-icon">🔧</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">SQLAlchemy</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="OpenCV">
-                            <div class="skill-icon">👁️</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">OpenCV</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                        <div class="skill-card" data-skill="Excel">
-                            <div class="skill-icon">📋</div>
-                            <div class="skill-content">
-                                <h4 class="skill-name">Excel</h4>
-                            </div>
-                            <div class="skill-glow"></div>
-                        </div>
-                    </div>
-                </div>
+                <i class="fas fa-eye project-icon"></i>
             </div>
-        </div>
-    </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Education Journey</h2>
-                <p class="section-subtitle">My academic path</p>
+            <!-- Project 5: Full Width Card (Row 3, Col 1, 2 & 3) -->
+            <div class="bento-item bento-full">
+                <div class="bento-content">
+                    <div class="project-category">Computer Vision</div>
+                    <h3 class="project-title">Real-Time Object Recognition Analysis</h3>
+                    <p class="project-description">
+                        Comparative analysis of YOLO vs SSD models using PASCAL VOC dataset, achieving optimal speed-accuracy trade-offs for real-time applications.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">CUDA</span>
+                        <span class="tech-tag">YOLO & SSD</span>
+                    </div>
+                </div>
+                <i class="fas fa-database project-icon"></i>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-        </div>
-            <div class="timeline-content">
-                        <div class="timeline-header">
-            <h3>Master of Computer Science</h3>
-                            <span class="timeline-period">2024 - 2026</span>
-                        </div>
-                        <div class="timeline-institution">North Carolina State University</div>
-                        <div class="timeline-details">
-                            <p>GPA: 3.55/4.0</p>
-                            <p>Focus: Artificial Intelligence, Machine Learning, Data Science</p>
-                        </div>
-                        <div class="timeline-badges">
-                            <span class="badge">AI/ML</span>
-                            <span class="badge">Data Science</span>
-                            <span class="badge">Research</span>
-            </div>
-            </div>
-        </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-            <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Bachelor of Engineering - Computer Engineering</h3>
-                            <span class="timeline-period">2020 - 2024</span>
-                        </div>
-                        <div class="timeline-institution">University of Mumbai</div>
-                        <div class="timeline-details">
-                            <p>CGPA: 8.83/10</p>
-                            <p>Focus: Computer Vision, Software Engineering, Data Structures</p>
-            </div>
-                        <div class="timeline-badges">
-                            <span class="badge">Computer Vision</span>
-                            <span class="badge">Software Engineering</span>
-                            <span class="badge">Research Publications</span>
-            </div>
-        </div>
-            </div>
-          </div>
-        </div>
-    </section>
-      
-    <!-- Projects Section -->
-    <section id="projects" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Some of my recent work</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <!-- <div class="project-links">
-                                <a href="https://github.com/KaustubhAs/BioRAG" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>  -->
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">AI/ML & Developer Tools</div>
-                        <h3 class="project-title">AI-Powered Technical Debt Agent & MCP Server</h3>
-                        <p class="project-description">
-                            Engineered a production-ready Model Context Protocol (MCP) server and GitHub Actions workflow integrating with VS Code and Copilot. Utilized fine-tuned GPT-4.1-mini models to automatically detect, classify, and refactor technical debt across 5 severity levels using a comprehensive 3-step workflow.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">MCP</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">GitHub Actions</span>
-                            <span class="tech-tag">Node.js</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">3</span>
-                                <span class="stat-label">Custom MCP Tools</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">5</span>
-                                <span class="stat-label">Severity Levels</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <!-- <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a> -->
-                                <a href="https://github.com/KaustubhAs/BioRAG" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div> 
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">AI/ML & Healthcare</div>
-                        <h3 class="project-title">Biomedical Assistant - RAG System</h3>
-                        <p class="project-description">
-                            Engineered a distributed PySpark data preprocessing pipeline (1M+ records) with shuffle-aware partitioning and partitioned Parquet output to power a biomedical RAG system integrating a Knowledge Graph and LLMs. Delivered >95% reliable responses across 10K+ biomedical entities.
-                            <!-- Developed a biomedical query answering assistant using knowledge Graph and RAG with LLM, for biomedical information 
-                            with >95% response reliability, processing 10,000+ entities and 4,920 disease-symptom relationships. -->
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PySpark</span>
-                            <span class="tech-tag">Parquet</span>
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">Knowledge Graph</span>
-                            <span class="tech-tag">Streamlit</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">>95%</span>
-                                <span class="stat-label">Reliability</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">10K+</span>
-                                <span class="stat-label">Entities</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <!-- <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div> -->
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                </div>
-                    <div class="project-content">
-                        <div class="project-category">AI/ML</div>
-                        <h3 class="project-title">ExpenseLama - LLM Powered Expense Tracking</h3>
-                        <p class="project-description">
-                            Developed an intelligent expense tracking system using LLM-based categorization 
-                            with 93% accuracy, featuring real-time data visualization and automated pipelines.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">Python</span>
-                    </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">93%</span>
-                                <span class="stat-label">Accuracy</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">680ms</span>
-                                <span class="stat-label">Response Time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="computer-vision">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <!-- <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div> -->
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Computer Vision</div>
-                        <h3 class="project-title">Real-Time Object Recognition Analysis</h3>
-                        <p class="project-description">
-                            Comparative analysis of YOLO vs SSD models using PASCAL VOC dataset, 
-                            achieving optimal speed-accuracy trade-offs for real-time applications.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">YOLO & SSD</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">135 FPS</span>
-                                <span class="stat-label">YOLO Speed</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">91.7%</span>
-                                <span class="stat-label">SSD Precision</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="recommendation">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <!-- <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div> -->
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Recommendation Systems</div>
-                        <h3 class="project-title">Customer Behavior Analysis</h3>
-                        <p class="project-description">
-                            Built comprehensive recommendation system comparing ML and deep learning 
-                            approaches using Amazon Food Reviews dataset with 568K+ reviews.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">LSTM</span>
-                            <span class="tech-tag">Autoencoders</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">568K+</span>
-                                <span class="stat-label">Reviews</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">256K+</span>
-                                <span class="stat-label">Users</span>
-            </div>
-                </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="bot">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <!-- <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div> -->
-                        </div>
-                        <div class="project-placeholder">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category">Discord Bot</div>
-                        <h3 class="project-title">Enigma: AI-Powered Music Bot</h3>
-                        <p class="project-description">
-                            Developed a sophisticated Discord music bot with AI-powered recommendations, 
-                            featuring real-time streaming and dynamic playlist management.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Discord.py</span>
-                            <span class="tech-tag">FFmpeg</span>
-                            <span class="tech-tag">yt-dlp</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <span class="stat-value">600+</span>
-                                <span class="stat-label">Tracks</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">30%</span>
-                                <span class="stat-label">Faster Response</span>
-            </div>
-                </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Certifications</h2>
-                <p class="section-subtitle">Professional Achievements</p>
-            </div>
-            <div class="certifications-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Intro to Deploying RAG Pipelines</h3>
-                        <p class="cert-issuer">NVIDIA</p>
-                        <div class="cert-badge">AI/ML</div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Accelerating End-End DS Workflows</h3>
-                        <p class="cert-issuer">NVIDIA</p>
-                        <div class="cert-badge">Data Science</div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Getting Started with Deep Learning</h3>
-                        <p class="cert-issuer">NVIDIA</p>
-                        <div class="cert-badge">Deep Learning</div>
-            </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>DevOps</h3>
-                        <p class="cert-issuer">Student Development Program, SIESGST</p>
-                        <div class="cert-badge">DevOps</div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Introduction to Data Science</h3>
-                        <p class="cert-issuer">Cisco Networking Academy</p>
-                        <div class="cert-badge">Data Science</div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Data Analytics Essentials</h3>
-                        <p class="cert-issuer">Cisco Networking Academy</p>
-                        <div class="cert-badge">Analytics</div>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Intro to Cloud Semester 1 and 2</h3>
-                        <p class="cert-issuer">AWS Academy Graduate</p>
-                        <div class="cert-badge">Cloud</div>
-            </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="cert-content">
-                        <h3>Cloud Security Foundations</h3>
-                        <p class="cert-issuer">AWS Academy Graduate</p>
-                        <div class="cert-badge">Security</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's work together</p>
+    <section id="contact" class="container reveal">
+        <h2 class="section-title">Get In Touch</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-info bento-item">
+                <h3>Let's collaborate.</h3>
+                <p>Whether you have a question, a project proposal, or just want to connect over a virtual coffee, my inbox is always open.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:ksonawa@ncsu.edu" style="color: var(--accent-neon); text-decoration: none; font-size: 1.125rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-envelope"></i> ksonawa@ncsu.edu
+                    </a>
+                    <a href="https://www.linkedin.com/in/iamkaustubhs/" target="_blank" style="color: var(--accent-neon); text-decoration: none; font-size: 1.125rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </div>
+                <i class="fas fa-paper-plane project-icon" style="bottom: 10px; right: 10px;"></i>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>
-                        I'm always interested in new opportunities and collaborations. 
-                        Whether you have a question or just want to say hi, feel free to reach out!
-                    </p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-details">
-                                <h4>Email</h4>
-                                <a href="mailto:ksonawa@ncsu.edu">ksonawa@ncsu.edu</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="method-details">
-                                <h4>Phone</h4>
-                                <a href="tel:+13526792771">+1 (352) 679-2771</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-details">
-                                <h4>Location</h4>
-                                <span>Raleigh, NC</span>
-                            </div>
-                        </div>
+            
+            <div class="contact-form-wrapper bento-item">
+                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted! (Add your backend integration here)');">
+                    <div class="form-group">
+                        <label for="name" style="color: var(--text-secondary); font-size: 0.875rem;">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/iamkaustubhsonawane/" class="social-link" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/KaustubhAs" class="social-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                    
+                    <div class="form-group">
+                        <label for="email" style="color: var(--text-secondary); font-size: 0.875rem;">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
                     </div>
-            </div>
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/mzzglplg" method="POST">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-            </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-            </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-            </div>
+                    
+                    <div class="form-group">
+                        <label for="message" style="color: var(--text-secondary); font-size: 0.875rem;">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Hello! I'd like to discuss..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Minimal Footer -->
+    <footer class="minimal-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">KS</span>
-                    <p>AI/ML Engineer & Data Scientist</p>
+                <div class="social-links reveal">
+                    <a href="mailto:ksonawa@ncsu.edu" class="social-link">Email</a>
+                    <a href="https://www.linkedin.com/in/iamkaustubhs/" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/KaustubhAs" target="_blank" class="social-link">GitHub</a>
+                    <a href="assets\Kaustubh Sonawane - Resume.pdf" class="social-link">Resume</a>
                 </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+                <div class="footer-bottom reveal">
+                    <p>&copy; <span id="year"></span> Kaustubh Sonawane. All rights reserved.</p>
                 </div>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/iamkaustubhsonawane/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/KaustubhAs" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Kaustubh Sonawane. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="portfolio-js.js"></script>
+    <!-- Interactive JS -->
+    <script>
+        // --- 1. Aurora Effect Initialization & Mouse Tracking ---
+        const initAurora = () => {
+            const container = document.createElement('div');
+            container.className = 'aurora-container';
+
+            // Create 3 glowing blobs
+            for (let i = 1; i <= 3; i++) {
+                const blob = document.createElement('div');
+                blob.className = `aurora-blob aurora-blob-${i}`;
+                container.appendChild(blob);
+            }
+
+            // Insert at the very back of the body
+            document.body.insertBefore(container, document.body.firstChild);
+
+            // Setup Mouse tracking for slight 3D parallax interaction
+            const blobs = document.querySelectorAll('.aurora-blob');
+            window.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+
+                blobs.forEach((blob, index) => {
+                    const speed = (index + 1) * 0.04; 
+                    const xOffset = (x - centerX) * speed;
+                    const yOffset = (y - centerY) * speed;
+
+                    // Apply transform, preserving the base centering for blob-3
+                    if (blob.classList.contains('aurora-blob-3')) {
+                        blob.style.transform = `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`;
+                    } else {
+                        blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                    }
+                });
+            });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAurora);
+        } else {
+            initAurora();
+        }
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Loading Screen Logic
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.visibility = 'hidden';
+            }, 800);
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Dynamic mouse tracking for Bento Box glow effect
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('mousemove', e => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                item.style.setProperty('--mouse-x', `${x}px`);
+                item.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Scroll Reveal Animation via IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            });
+        }, revealOptions);
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Back to Top Button Logic & Navbar Background
+        const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            // Show/Hide Back to top button
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
 </body>
 </html>
