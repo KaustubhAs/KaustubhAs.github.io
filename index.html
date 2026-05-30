@@ -1625,10 +1625,10 @@
 
             <div class="bento-item">
                 <div class="bento-content">
-                    <div class="project-category">Computer Vision</div>
-                    <h3 class="project-title">Defect Detection</h3>
+                    <div class="project-category">GPU Computing</div>
+                    <h3 class="project-title">Triton-Based Flash Attention</h3>
                     <p class="project-description">
-                        Developed an intelligent expense tracking system using LLM-based categorization with 93% accuracy, featuring real-time data visualization and automated pipelines.
+                        Accelerated transformer inference runtime by 1.8× for sequence lengths up to 8,192 tokens by engineering a fused, SRAM-aware 64×64 tiled FlashAttention GPU kernel in Triton/CUDA to eliminate high-latency HBM round-trips. Reduced attention mechanism memory complexity from O(N2) to O(N), cutting execution latency by 43.6% (903.64 ms to 509.57 ms) at 8K context, by implementing block-wise QKV matrix computations and occupancy-aware kernel scheduling.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">LangChain</span>
