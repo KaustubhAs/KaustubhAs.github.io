@@ -829,7 +829,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            cursor: default;
+            cursor: pointer;
             box-shadow: var(--shadow-elevated);
             transition: box-shadow 0.4s ease, border-color 0.35s ease, transform 0.35s ease;
         }
@@ -942,6 +942,291 @@
             margin-bottom: var(--spacing-16);
             filter: sepia(0.35) saturate(0.5) hue-rotate(210deg) brightness(0.7) contrast(1.05);
             border: 1px solid var(--hairline);
+        }
+
+        /* ─── Inspect Panel Overlay ──────────────────────────────── */
+        @keyframes panelFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes panelSlideUp {
+            from { opacity: 0; transform: translateY(28px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0)    scale(1);    }
+        }
+
+        .inspect-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 5, 29, 0.78);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-24);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1),
+                        visibility 0.4s cubic-bezier(0.16,1,0.3,1);
+            overflow-y: auto;
+        }
+
+        .inspect-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .inspect-panel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            box-shadow:
+                rgba(0,0,0,0.50) 0px 20px 50px,
+                rgba(65,161,207,0.06) 0px 0px 60px,
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: panelSlideUp 0.45s cubic-bezier(0.16,1,0.3,1) both;
+        }
+
+        /* Panel header */
+        .inspect-panel__header {
+            margin-bottom: var(--spacing-24);
+            padding-bottom: var(--spacing-24);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .inspect-panel__eyebrow {
+            font-family: var(--font-jetbrains-mono);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-action-azure);
+            margin-bottom: var(--spacing-8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-8);
+        }
+
+        .inspect-panel__eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--color-action-azure);
+            opacity: 0.7;
+        }
+
+        .inspect-panel__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: var(--font-weight-regular);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--color-ghost-white);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .inspect-panel__subtitle {
+            font-family: var(--font-jetbrains-mono);
+            font-size: var(--text-caption);
+            color: var(--color-action-azure);
+            opacity: 0.9;
+            letter-spacing: 0.04em;
+        }
+
+        /* Tag cluster */
+        .inspect-panel__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-8);
+            margin-bottom: var(--spacing-24);
+        }
+
+        .inspect-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: var(--radius-buttons);
+            border: 1px solid rgba(65,161,207,0.25);
+            background: rgba(65,161,207,0.08);
+            font-family: var(--font-jetbrains-mono);
+            font-size: 12px;
+            color: rgba(202,213,226,0.9);
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .inspect-tag:hover {
+            background: rgba(65,161,207,0.16);
+            border-color: rgba(65,161,207,0.4);
+        }
+
+        /* Prose block */
+        .inspect-panel__prose {
+            font-family: var(--font-dm-sans);
+            font-size: var(--text-body);
+            line-height: 1.75;
+            color: var(--color-mist);
+            margin-bottom: var(--spacing-32);
+        }
+
+        /* Metrics grid */
+        .inspect-panel__metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-16);
+            margin-bottom: var(--spacing-32);
+            padding: var(--spacing-24);
+            background: rgba(0, 188, 125, 0.04);
+            border: 1px solid rgba(0,188,125,0.12);
+            border-radius: var(--radius-glass-md);
+        }
+
+        .inspect-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .inspect-metric__value {
+            font-family: var(--font-jetbrains-mono);
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-specimen-green);
+            letter-spacing: -0.01em;
+            text-shadow: 0 0 20px rgba(0,188,125,0.4);
+        }
+
+        .inspect-metric__label {
+            font-family: var(--font-jetbrains-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(202,213,226,0.5);
+        }
+
+        /* Footer */
+        .inspect-panel__footer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-16);
+            align-items: center;
+            padding-top: var(--spacing-24);
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .inspect-close-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-8);
+            padding: 10px 22px;
+            border-radius: var(--radius-buttons);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            font-family: var(--font-jetbrains-mono);
+            font-size: var(--text-caption);
+            color: var(--color-mist);
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+        }
+
+        .inspect-close-btn:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
+            color: var(--color-ghost-white);
+        }
+
+        .inspect-launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-8);
+            padding: 10px 22px;
+            border-radius: var(--radius-buttons);
+            border: 1px solid rgba(65,161,207,0.4);
+            background: rgba(65,161,207,0.1);
+            font-family: var(--font-jetbrains-mono);
+            font-size: var(--text-caption);
+            color: var(--color-ice-blue);
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .inspect-launch-btn:hover {
+            background: rgba(65,161,207,0.2);
+            border-color: rgba(65,161,207,0.6);
+            box-shadow: 0 0 24px rgba(65,161,207,0.18);
+        }
+
+        .inspect-launch-btn.hidden,
+        .inspect-launch-btn[href=''] {
+            display: none;
+        }
+
+        /* Absolute close × button */
+        .inspect-panel__close-x {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: var(--color-mist);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .inspect-panel__close-x:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--color-ghost-white);
+            border-color: rgba(255,255,255,0.22);
+        }
+
+        /* Bento item — clickable cue */
+        .bento-item[data-project-id]::after {
+            content: 'Inspect ›';
+            position: absolute;
+            bottom: var(--card-padding);
+            right: var(--card-padding);
+            font-family: var(--font-jetbrains-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-action-azure);
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .bento-item[data-project-id]:hover::after {
+            opacity: 0.75;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 600px) {
+            .inspect-panel {
+                padding: var(--spacing-24);
+                border-radius: var(--radius-glass-md);
+            }
+            .inspect-panel__metrics {
+                flex-direction: column;
+            }
         }
 
         /* Contact */
@@ -1577,7 +1862,15 @@
 
         <div class="bento-grid">
 
-            <div class="bento-item bento-wide">
+            <!-- Card 1: Technical Debt Agent -->
+            <div class="bento-item bento-wide"
+                 data-project-id="tech-debt-agent"
+                 data-project-title="AI-Powered Technical Debt Agent"
+                 data-project-subtitle="MCP Server · GitHub Actions · VS Code Integration"
+                 data-project-tags='["TypeScript","Python","MCP","GitHub Actions","GPT-4.1-mini","VS Code"]'
+                 data-project-long-desc="Engineered a production-grade Model Context Protocol (MCP) server paired with a GitHub Actions workflow that plugs directly into VS Code and GitHub Copilot. Fine-tuned GPT-4.1-mini models to automatically detect, classify, and propose safe refactors for technical debt across five severity levels — from stale comments to deeply coupled architecture — using a rigorous three-step triage, analysis, and remediation workflow. The system operates fully in CI/CD, surfacing inline suggestions without requiring manual review gates."
+                 data-project-metrics='["5 Severity Levels","Automated CI/CD","GPT-4.1-mini Fine-tuned"]'
+                 data-project-link="https://github.com/KaustubhAs">
                 <div class="bento-content">
                     <div class="project-category">AI/ML & Developer Tools</div>
                     <h3 class="project-title">AI-Powered Technical Debt Agent</h3>
@@ -1593,7 +1886,15 @@
                 </div>
             </div>
 
-            <div class="bento-item bento-tall">
+            <!-- Card 2: Biomedical RAG -->
+            <div class="bento-item bento-tall"
+                 data-project-id="biomedical-rag"
+                 data-project-title="Biomedical Assistant RAG"
+                 data-project-subtitle="Distributed PySpark Pipeline · Knowledge Graph · LLM"
+                 data-project-tags='["PySpark","LangChain","Knowledge Graph","Streamlit","Neo4j","LLMs"]'
+                 data-project-long-desc="Engineered a distributed PySpark data preprocessing pipeline capable of ingesting and transforming 1M+ medical records with shuffle-aware partitioning and partitioned Parquet output. The cleaned corpus powers a Retrieval-Augmented Generation system that fuses a disease-symptom Knowledge Graph with large language models to deliver contextually grounded clinical answers. Achieved greater than 95% reliable responses across 10K+ biomedical entities spanning 4,920 unique disease-symptom relationships, evaluated against a curated benchmark of clinical Q&amp;A pairs."
+                 data-project-metrics='[">95% Response Reliability","1M+ Records Processed","10K+ Biomedical Entities","4,920 Disease-Symptom Links"]'
+                 data-project-link="https://github.com/KaustubhAs">
                 <div class="bento-content">
                     <div class="project-category">AI/ML & Data Engineering</div>
                     <h3 class="project-title">Biomedical Assistant RAG</h3>
@@ -1609,7 +1910,15 @@
                 </div>
             </div>
 
-            <div class="bento-item">
+            <!-- Card 3: Customer Behavior -->
+            <div class="bento-item"
+                 data-project-id="customer-behavior"
+                 data-project-title="Customer Behavior Analysis"
+                 data-project-subtitle="Recommendation Engine · 568K+ Reviews"
+                 data-project-tags='["Scikit-Learn","XGBoost","Collaborative Filtering","Deep Learning","Python"]'
+                 data-project-long-desc="Designed and evaluated a full-stack recommendation system on the Amazon Fine Food Reviews dataset containing 568K+ user reviews. Benchmarked classical collaborative filtering approaches against gradient-boosted tree ensembles (XGBoost) and deep learning matrix factorization models. Analysis surfaces concrete accuracy vs. latency trade-off curves that directly inform real-world deployment decisions for e-commerce personalization at scale."
+                 data-project-metrics='["568K+ Reviews","ML vs DL Benchmarked","Top-N Recommendation"]'
+                 data-project-link="https://github.com/KaustubhAs">
                 <div class="bento-content">
                     <div class="project-category">Predictive Modeling</div>
                     <h3 class="project-title">Customer Behavior Analysis</h3>
@@ -1623,22 +1932,38 @@
                 </div>
             </div>
 
-            <div class="bento-item">
+            <!-- Card 4: Flash Attention -->
+            <div class="bento-item"
+                 data-project-id="flash-attention"
+                 data-project-title="Triton-Based Flash Attention"
+                 data-project-subtitle="Custom GPU Kernel · SRAM-Aware Tiling · 8K Context"
+                 data-project-tags='["Triton","CUDA","PyTorch","GPU Kernels","Python"]'
+                 data-project-long-desc="Accelerated transformer inference by 1.8× for sequence lengths up to 8,192 tokens by engineering a fused, SRAM-aware 64×64 tiled FlashAttention GPU kernel in Triton/CUDA to eliminate high-latency HBM round-trips. Reduced attention mechanism memory complexity from O(N²) to O(N), cutting execution latency by 43.6% — from 903.64 ms to 509.57 ms at 8K context — through block-wise QKV matrix computations and occupancy-aware kernel scheduling that maximizes GPU streaming multiprocessor utilization."
+                 data-project-metrics='["1.8× Throughput Gain","43.6% Latency Reduction","O(N²) → O(N) Memory","8K Token Context"]'
+                 data-project-link="https://github.com/KaustubhAs">
                 <div class="bento-content">
                     <div class="project-category">GPU Computing</div>
                     <h3 class="project-title">Triton-Based Flash Attention</h3>
                     <p class="project-description">
-                        Accelerated transformer inference runtime by 1.8× for sequence lengths up to 8,192 tokens by engineering a fused, SRAM-aware 64×64 tiled FlashAttention GPU kernel in Triton/CUDA to eliminate high-latency HBM round-trips. Reduced attention mechanism memory complexity from O(N2) to O(N), cutting execution latency by 43.6% (903.64 ms to 509.57 ms) at 8K context, by implementing block-wise QKV matrix computations and occupancy-aware kernel scheduling.
+                        Accelerated transformer inference runtime by 1.8× for sequence lengths up to 8,192 tokens by engineering a fused, SRAM-aware 64×64 tiled FlashAttention GPU kernel in Triton/CUDA to eliminate high-latency HBM round-trips.
                     </p>
                     <div class="project-tech">
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Triton</span>
+                        <span class="tech-tag">CUDA</span>
+                        <span class="tech-tag">PyTorch</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bento-item bento-full">
+            <!-- Card 5: Object Recognition -->
+            <div class="bento-item bento-full"
+                 data-project-id="object-recognition"
+                 data-project-title="Real-Time Object Recognition Analysis"
+                 data-project-subtitle="YOLO vs SSD · PASCAL VOC · Speed-Accuracy Trade-off"
+                 data-project-tags='["PyTorch","TensorFlow","CUDA","YOLO","SSD","OpenCV","PASCAL VOC"]'
+                 data-project-long-desc="Conducted a rigorous comparative study of single-stage object detectors — YOLO and SSD — on the standard PASCAL VOC benchmark dataset. Implemented both architectures from canonical paper specifications and profiled their inference throughput, mean Average Precision (mAP), and per-class detection quality across challenging real-world scenarios. The resulting analysis provides principled guidance on choosing the optimal detector architecture when balancing latency budgets against accuracy requirements in production computer vision pipelines."
+                 data-project-metrics='["PASCAL VOC Benchmark","YOLO vs SSD mAP","Real-Time Inference","Multi-Class Detection"]'
+                 data-project-link="https://github.com/KaustubhAs">
                 <div class="bento-content">
                     <div class="project-category">Computer Vision</div>
                     <h3 class="project-title">Real-Time Object Recognition Analysis</h3>
@@ -1656,6 +1981,44 @@
 
         </div>
     </section>
+
+    <!-- ─── Glassmorphic Inspect Panel Overlay ─────────────────────── -->
+    <div class="inspect-overlay" id="inspectOverlay" role="dialog" aria-modal="true" aria-labelledby="inspectPanelTitle">
+        <div class="inspect-panel" id="inspectPanel">
+
+            <!-- × close button -->
+            <button class="inspect-panel__close-x" id="inspectCloseX" aria-label="Close inspection panel">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Header -->
+            <header class="inspect-panel__header">
+                <p class="inspect-panel__eyebrow" id="inspectEyebrow">Architectural Specimen</p>
+                <h2 class="inspect-panel__title" id="inspectPanelTitle">Project Title</h2>
+                <p class="inspect-panel__subtitle" id="inspectSubtitle">Subtitle</p>
+            </header>
+
+            <!-- Tech stack pills -->
+            <div class="inspect-panel__tags" id="inspectTags"></div>
+
+            <!-- Long description -->
+            <p class="inspect-panel__prose" id="inspectProse"></p>
+
+            <!-- Metrics grid -->
+            <div class="inspect-panel__metrics" id="inspectMetrics"></div>
+
+            <!-- Footer actions -->
+            <footer class="inspect-panel__footer">
+                <button class="inspect-close-btn" id="inspectCloseBtn">
+                    <i class="fas fa-times-circle"></i> Close Inspection
+                </button>
+                <a class="inspect-launch-btn" id="inspectLaunchBtn" href="" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> Launch Live Payload
+                </a>
+            </footer>
+
+        </div>
+    </div>
 
     <section id="contact" class="container reveal">
         <h2 class="section-heading">
@@ -1882,6 +2245,114 @@
                 item.style.removeProperty('--mouse-y');
             });
         });
+
+        /* ─── Inspect Panel Logic ──────────────────────────────────── */
+        (function initInspectPanel() {
+            const overlay    = document.getElementById('inspectOverlay');
+            const panel      = document.getElementById('inspectPanel');
+            const closeX     = document.getElementById('inspectCloseX');
+            const closeBtn   = document.getElementById('inspectCloseBtn');
+            const launchBtn  = document.getElementById('inspectLaunchBtn');
+            const titleEl    = document.getElementById('inspectPanelTitle');
+            const subtitleEl = document.getElementById('inspectSubtitle');
+            const tagsEl     = document.getElementById('inspectTags');
+            const proseEl    = document.getElementById('inspectProse');
+            const metricsEl  = document.getElementById('inspectMetrics');
+
+            if (!overlay) return;
+
+            function openPanel(item) {
+                const ds = item.dataset;
+                if (!ds.projectId) return;
+
+                // Populate title & subtitle
+                titleEl.textContent    = ds.projectTitle    || '';
+                subtitleEl.textContent = ds.projectSubtitle || '';
+
+                // Populate tag pills
+                tagsEl.innerHTML = '';
+                try {
+                    const tags = JSON.parse(ds.projectTags || '[]');
+                    tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'inspect-tag';
+                        span.textContent = tag;
+                        tagsEl.appendChild(span);
+                    });
+                } catch(e) {}
+
+                // Populate prose
+                proseEl.innerHTML = ds.projectLongDesc || '';
+
+                // Populate metrics
+                metricsEl.innerHTML = '';
+                try {
+                    const metrics = JSON.parse(ds.projectMetrics || '[]');
+                    metrics.forEach(m => {
+                        const div   = document.createElement('div');
+                        div.className = 'inspect-metric';
+                        const parts = m.split(' ');
+                        // First token as value, rest as label
+                        const valSpan = document.createElement('span');
+                        valSpan.className = 'inspect-metric__value';
+                        valSpan.textContent = parts[0];
+                        const lblSpan = document.createElement('span');
+                        lblSpan.className = 'inspect-metric__label';
+                        lblSpan.textContent = parts.slice(1).join(' ');
+                        div.appendChild(valSpan);
+                        div.appendChild(lblSpan);
+                        metricsEl.appendChild(div);
+                    });
+                } catch(e) {}
+
+                // Hide metrics block if empty
+                metricsEl.style.display = metricsEl.children.length ? 'flex' : 'none';
+
+                // Populate launch link
+                const link = ds.projectLink || '';
+                if (link && link !== '') {
+                    launchBtn.href = link;
+                    launchBtn.style.display = 'inline-flex';
+                } else {
+                    launchBtn.href = '';
+                    launchBtn.style.display = 'none';
+                }
+
+                // Re-trigger animation
+                panel.style.animation = 'none';
+                panel.offsetHeight; // reflow
+                panel.style.animation = '';
+
+                overlay.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closePanel() {
+                overlay.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+
+            // Open on bento item click (only items with data)
+            document.querySelectorAll('.bento-item[data-project-id]').forEach(item => {
+                item.addEventListener('click', () => openPanel(item));
+            });
+
+            // Close triggers
+            closeX.addEventListener('click', closePanel);
+            closeBtn.addEventListener('click', closePanel);
+
+            // Backdrop click (outside the panel card)
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closePanel();
+            });
+
+            // Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+                    closePanel();
+                }
+            });
+        })();
 
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
