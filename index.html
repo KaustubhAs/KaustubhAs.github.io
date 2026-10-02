@@ -812,7 +812,7 @@
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 320px;
+            grid-auto-rows: minmax(320px, auto);
             gap: var(--spacing-16);
         }
 
@@ -865,6 +865,31 @@
         .bento-wide { grid-column: span 2; }
         .bento-tall { grid-row: span 2; }
         .bento-full { grid-column: span 3; }
+
+        .research-card {
+            cursor: default;
+            min-height: 320px;
+            overflow: visible;
+        }
+
+        .research-card .project-description {
+            display: block;
+            overflow: visible;
+        }
+
+        .research-card .research-meta {
+            color: var(--color-mist);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-16);
+        }
+
+        .research-card .research-link {
+            align-self: flex-start;
+            color: var(--color-action-azure);
+            margin-top: var(--spacing-16);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
 
         .bento-content {
             position: relative;
@@ -1861,6 +1886,23 @@
         </h2>
 
         <div class="bento-grid">
+
+            <article class="bento-item bento-full research-card" aria-labelledby="ot-research-title">
+                <div class="bento-content">
+                    <div class="project-category">Research · Master's Course Project</div>
+                    <h3 class="project-title" id="ot-research-title">Optimal Transport in One Dimension</h3>
+                    <p class="research-meta">North Carolina State University · Fall 2025 · August–December 2025</p>
+                    <p class="project-description">
+                        Studied how empirical distributions converge under Wasserstein distance, comparing Robust Partial Wasserstein (RPW) multi-scale arguments with explicit grid-based transport plans in one dimension. The report examines why these constructions fall short of sorting-based transport under the assumptions studied, and distinguishes squared transport cost from metric-level bounds.
+                    </p>
+                    <div class="project-tech" aria-label="Research topics">
+                        <span class="tech-tag">Optimal Transport</span>
+                        <span class="tech-tag">Wasserstein Distance</span>
+                        <span class="tech-tag">Convergence Analysis</span>
+                    </div>
+                    <a class="research-link" href="assets/Kaustubh_OT_Report.pdf" target="_blank" rel="noopener" aria-label="Read research report (PDF, opens in a new tab)">Read research report (PDF) <span aria-hidden="true">↗</span></a>
+                </div>
+            </article>
 
             <!-- Card 1: Technical Debt Agent -->
             <div class="bento-item bento-wide"
